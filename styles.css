@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    color: black;
+    font-size: 3vmin; /* scales with smaller display dimension */
+    width: 100%; /* prevents premature word wrapping when page gets small */
+    background-color: white;
+    background-size:;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden; /* hides little scrollbar at bottom */
+}
+
+textarea {
+    width: 75%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    background-color: #defbff;
+    resize: none;
+    font-family:"sans-serif", Arial;
+    font-size: 2vmin;
+  
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+  }
+
+#grad {
+background-image: linear-gradient(white, #ffb8db);
+}
+
+/* a fatter space between elements */
+div.fat {
+    line-height: 150%;
+}
+
+/* a standard space between elements */
+div.slim {
+    line-height: 75%;
+}
+
