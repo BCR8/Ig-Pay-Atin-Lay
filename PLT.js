@@ -1,16 +1,21 @@
 // JS strict mode for habit hygiene (MUST be first statement in file)
 'use strict';
 
-// translation function wrapping rest of class's functionality
+// wrapper on translation function with default vowel suffix prefix
 function translate(userInputPhrase) {
+	return translate(userInputPhrase, 'y');
+}
+
+// translation function wrapping rest of class's functionality
+function translate(userInputPhrase, suffixPrefix) {
 	// define some constants for the rest of the program
 	// vowels, silent 'h's, and the universal suffix (w or w/o starting letter as vowel)
 	var vowels = ['a','e','i','o','u','y','A','E','I','O','U','Y'];
 	var minusY = ['a','e','i','o','u','A','E','I','O','U'];
 	// standard suffix
 	var pyg = 'ay';
-	// suffix for words starting in vowels (minus_y)
-	var vowPyg = 'yay';
+	// additional prefix for suffix for words starting with vowels (i.e. 'yay' instead of 'ay' if 'y')
+	var vowPyg = (suffixPrefix == 'none') ? '' : suffixPrefix;
 	// list of silent 'h' words
 	var silentH = ['honestly','honor', 'honorary', 'honored', 'honorable', 'honorific', 'honoring', 'honors', 'honorifics', 'herb', 'herbalist', 'herbicide', 'herbivore', 'herbs', 'herbalists', 'herbicides', 'herbivores', 'honest', 'honesty', 'hour', 'hours', 'hourly', 'heir', 'heiress', 'heirloom', 'heirs', 'heiresses', 'heirlooms', 'homage', 'hors'];
 
@@ -57,11 +62,11 @@ function translate(userInputPhrase) {
 			word = word.toLowerCase();
 			// treat silent first letter 'h' words as you would if the first letter was a vowel
 			if (silentH.includes(word)) {
-				var silentHWord = word + vowPyg;
+				var silentHWord = word + vowPyg + pyg;
 				return(silentHWord);
 			}
 			// fix vowel first words ending in 'y'from having an awkward 'yy' in  the middle
-			else if (minusY.includes(word[0]) && (word.slice(-1) == 'y')) {
+			else if (minusY.includes(word[0]) && (word.slice(-1) == vowPyg)) {
 				return(word + pyg);
 			}
 			// return the 'word' unaltered if it is not > 0, or either alpha or a contraction
@@ -70,7 +75,7 @@ function translate(userInputPhrase) {
 			}
 			// append standard suffix for words starting in a vowel (-y)
 			else if (minusY.includes(word[0])) {
-				var vowelWord = word + vowPyg;
+				var vowelWord = word + vowPyg + pyg;
 				return(vowelWord);
 			}
 			else {
