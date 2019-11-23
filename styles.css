@@ -12,7 +12,8 @@ body {
 textarea {
 	width: 75%;
 	height: 150px;
-	padding: 12px 20px;
+    padding: 12px 20px; /* adjust this 2nd value for x margin within textarea */
+    /* margin: 100px; */
 	box-sizing: border-box;
 	border: 2px solid #000000;
 	border-radius: 4px;
@@ -51,8 +52,9 @@ div.slim {
 	/* textareas are 75% width, so 12.5% inward per side */
 	right: 12.5%; 
 	margin-top: 9px;
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
+	opacity: 0.5;
 }
 
 /* Settings overlay */
